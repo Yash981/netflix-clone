@@ -13,7 +13,7 @@ import { getSession, signOut } from "next-auth/react";
 
 export async function getServerSideProps(context:NextPageContext){
   const session = await getSession(context);
-  console.log(session,'sessionsss');
+  // console.log(session,'sessionsss');
   if (!session) {
     return {
       redirect:{
