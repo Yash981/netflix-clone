@@ -30,9 +30,9 @@ const FavoriteButton:React.FC<FavoriteButtonProps> = ({ movieId }) => {
             // if is not favorite, we want to add it in to favorites. Since its a post method, we don't have to add explicit  {data: {movieId}}, you have to do it for delete request. For post request, we just nee movieId
             response = await axios.post('/api/favorite', {movieId});  
         }
-        console.log(response,'response')
+        // console.log(response,'response')
         const updatedFavoriteIds =  response?.data?.favoriteIds;
-        console.log(updatedFavoriteIds,'updatedFavoriteIds')
+        // console.log(updatedFavoriteIds,'updatedFavoriteIds')
     mutate({ 
         ...currentUser, 
         favoriteIds: updatedFavoriteIds,

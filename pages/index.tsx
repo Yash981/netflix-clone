@@ -13,21 +13,24 @@ import React from "react";
 import { authOptions } from "./api/auth/[...nextauth]";
 
 
-export async function getServerSideProps(context:GetServerSidePropsContext){
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  if (!context || !context.req || !context.res) {
+    throw new Error('Missing required context properties');
+  }
+
   const session = await getServerSession(context.req, context.res, authOptions);
-  // console.log(session,'sessionsss');
   if (!session) {
     return {
-      redirect:{
-        destination:'/auth',
-        permanent:false,
+      redirect: {
+        destination: '/auth',
+        permanent: false,
       },
     };
   }
 
   return {
-    props : {},
-  }
+    props: {},
+  };
 }
 
 export default function Home() {
