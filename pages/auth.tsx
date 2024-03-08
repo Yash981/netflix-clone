@@ -48,18 +48,18 @@ const Auth = () => {
       const result = await signIn("credentials", {
         email,
         password,
-        redirect: false,
-        callbackUrl: "/",
+        redirect: true,
+        callbackUrl: "/profiles",
       });
-      if (result?.error) {
-        console.log(result.error,'result error');
-      } else {
-        router.push('/profiles');
-      }
+      // if (result?.error) {
+      //   console.log(result.error,'result error');
+      // } else {
+      //   router.push('/profiles');
+      // }
     } catch (error) {
       console.log(error);
     }
-  }, [email, password,router]);
+  }, [email, password]);
 
   const register = useCallback(async () => {
     try {
