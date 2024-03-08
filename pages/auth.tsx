@@ -12,6 +12,9 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { useRouter } from "next/router";
 export async function getServerSideProps(context: GetServerSidePropsContext) {
+  if (!context || !context.req || !context.res) {
+    throw new Error('Missing required context properties auth ka');
+ }
   const session = await getServerSession(context.req, context.res, authOptions);
 
   if (session) {
