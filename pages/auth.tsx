@@ -45,7 +45,7 @@ const Auth = () => {
   }, []);
   const login = useCallback(async () => {
     try {
-      const result = await signIn("credentials", {
+      await signIn("credentials", {
         email,
         password,
         redirect: true,
